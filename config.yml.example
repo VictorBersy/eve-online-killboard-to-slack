@@ -1,0 +1,8 @@
+slack:
+  webhook_url: 'https://hooks.slack.com/services/XXXXXXXXXXX'
+  channel: '#losses'
+  username: 'zkillboard'
+zkillboard:
+  # You can select your alliance, corporation, etc...
+  # see more here : https://neweden-dev.com/ZKillboard_API#Fetch_modifiers
+  losses_url: 'https://zkillboard.com/api/losses/allianceID/XXXXXXXXXXX/'
