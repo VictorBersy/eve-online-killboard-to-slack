@@ -1,0 +1,10 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    slack-notifier (1.2.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  slack-notifier (~> 1.2.1)
