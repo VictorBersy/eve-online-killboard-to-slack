@@ -8,4 +8,5 @@ module EveKillboardToSlack
 
   require 'EveKillboardToSlack/boot/loader'
   require 'EveKillboardToSlack/zkillboard/zkillboard'
+  Boot::Boot.new
 end
