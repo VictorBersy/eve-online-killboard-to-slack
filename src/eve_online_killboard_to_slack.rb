@@ -7,4 +7,5 @@ module EveKillboardToSlack
   require 'slack-notifier'
 
   require 'EveKillboardToSlack/boot/loader'
+  require 'EveKillboardToSlack/zkillboard/zkillboard'
 end
