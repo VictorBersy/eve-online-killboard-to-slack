@@ -1,19 +1,21 @@
 module EveKillboardToSlack
   module Message
     class Dispatcher
-      def initialize(message, params)
-        # The log messenger is explicitly added
-        params[:to].push(:log).each do |messenger_name|
-          messenger = messenger_instance(messenger_name)
-          messenger.send(message)
+      def initialize(data, params)
+        data[:type] = params[:type]
+        params[:to].push(:log).each do |sender_name|
+          formatter = EveKillboardToSlack::Message::Formatter::Formatter.new(data, sender_name)
+          message = formatter.format_message
+          sender = sender_instance(sender_name, params[:type])
+          sender.send(message)
         end
       end
 
       private
 
-      def messenger_instance(to)
-        class_name = "EveKillboardToSlack::Message::#{to.downcase.capitalize}Messenger"
-        Object.const_get(class_name).new
+      def sender_instance(to, type)
+        class_name = "EveKillboardToSlack::Message::Sender::#{to.downcase.capitalize}Sender"
+        Object.const_get(class_name).new(type)
       end
     end
   end
