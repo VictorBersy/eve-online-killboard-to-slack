@@ -1,10 +1,12 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    rainbow (2.0.0)
     slack-notifier (1.2.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  rainbow (~> 2.0)
   slack-notifier (~> 1.2)
