@@ -2,15 +2,23 @@ module EveKillboardToSlack
   module Zkillboard
     class Zkillboard
       def initialize
-        @losses_url = $config['zkillboard']['losses_url']
-        retrieve_losses
+        retrieve_losses($config['zkillboard']['losses_url'])
+        retrieve_kills($config['zkillboard']['kills_url'])
       end
 
-      def retrieve_losses
-        last_loss_id = $database[:last_loss_id].to_s
-        @losses_url = append_zk_param(@losses_url, 'afterKillID', last_loss_id)
-        json_data = JSON.parse(open(@losses_url).read)
-        split_data(json_data)
+      def retrieve_kills(url)
+        retrieve_data(:kill, url)
+      end
+
+      def retrieve_losses(url)
+        retrieve_data(:loss, url)
+      end
+
+      def retrieve_data(type, url)
+        last_id = $database["last_#{type}_id".to_sym].to_s
+        url = append_zk_param(url, 'afterKillID', last_id)
+        json_data = JSON.parse(open(url).read)
+        split_data(json_data, type.to_sym)
       end
 
       private
@@ -20,21 +28,15 @@ module EveKillboardToSlack
         [url, '/', param_name, '/', value, '/'].join
       end
 
-      def split_data(json_data)
+      def split_data(json_data, type)
         json_data.each do |data|
-          format_message(data)
+          format_message(data, type)
         end
       end
 
-      def format_message(data)
-        loss_id         = data['killID']
-        date            = Time.parse(data['killTime']).to_s
-        pilot_name      = data['victim']['characterName']
-        totalValue      = data['zkb']['totalValue'].to_s + ' ISK'
-        zkillboard_link = "https://zkillboard.com/kill/#{loss_id}/"
-
-        message = "New loss : [#{date} : #{pilot_name} / #{totalValue}](#{zkillboard_link})"
-        EveKillboardToSlack::Message::Dispatcher.new(message, to: [:slack])
+      def format_message(data, type)
+        params = { to: [:slack], type: type }
+        message = EveKillboardToSlack::Message::Formatter.new(data, params)
       end
     end
   end
