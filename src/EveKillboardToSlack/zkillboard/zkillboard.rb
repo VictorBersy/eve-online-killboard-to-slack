@@ -36,7 +36,7 @@ module EveKillboardToSlack
 
       def format_message(data, type)
         params = { to: [:slack], type: type }
-        message = EveKillboardToSlack::Message::Formatter.new(data, params)
+        EveKillboardToSlack::Message::Dispatcher.new(data, params)
       end
     end
   end
