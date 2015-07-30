@@ -34,7 +34,7 @@ module EveKillboardToSlack
         zkillboard_link = "https://zkillboard.com/kill/#{loss_id}/"
 
         message = "New loss : [#{date} : #{pilot_name} / #{totalValue}](#{zkillboard_link})"
-        Message::Dispatcher.new(message, to: [:slack])
+        EveKillboardToSlack::Message::Dispatcher.new(message, to: [:slack])
       end
     end
   end
