@@ -1,8 +1,8 @@
 module EveKillboardToSlack
   module Message
     module Sender
-      class LogMessenger
-        def initialize
+      class LogSender
+        def initialize(type)
         end
 
         def send(message)

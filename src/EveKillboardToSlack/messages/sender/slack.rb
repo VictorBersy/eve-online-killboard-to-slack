@@ -1,8 +1,9 @@
 module EveKillboardToSlack
   module Message
     module Sender
-      class SlackMessenger
-        def initialize
+      class SlackSender
+        def initialize(type)
+          @type = type
           @slack_client = create_slack_client
         end
 
