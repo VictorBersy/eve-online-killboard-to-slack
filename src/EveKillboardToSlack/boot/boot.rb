@@ -8,7 +8,7 @@ module EveKillboardToSlack
 
       def set_global_vars
         $root_path = File.expand_path(File.join(__dir__, '..', '..', '..'))
-        $database  = YAML::load_file(File.join($root_path, 'config', 'database.yml'))
+        $database  = EveKillboardToSlack::Database.new
         $config    = YAML::load_file(File.join($root_path, 'config', 'config.yml'))
       end
     end

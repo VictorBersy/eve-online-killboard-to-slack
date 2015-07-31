@@ -1,6 +1,8 @@
 module EveKillboardToSlack
   require 'EveKillboardToSlack/boot/boot'
 
+  require 'EveKillboardToSlack/database/database'
+
   require 'EveKillboardToSlack/messages/dispatcher'
 
   require 'EveKillboardToSlack/messages/formatter'
