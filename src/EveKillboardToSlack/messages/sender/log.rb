@@ -7,6 +7,7 @@ module EveKillboardToSlack
 
         def send(message)
           puts message
+          $logger.info message
         end
       end
     end
