@@ -3,6 +3,7 @@ module EveKillboardToSlack
     class Boot
       def initialize
         set_global_vars
+        $logger.debug "Starting script at #{Time.now}"
         Zkillboard::Zkillboard.new
       end
 
