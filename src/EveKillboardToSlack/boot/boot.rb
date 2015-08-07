@@ -3,7 +3,7 @@ module EveKillboardToSlack
     class Boot
       def initialize
         set_global_vars
-        @zkillboard = Zkillboard::Zkillboard.new
+        Zkillboard::Zkillboard.new
       end
 
       def set_global_vars
