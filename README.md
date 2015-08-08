@@ -6,6 +6,20 @@ It allows you to receive losses and kills, retrieved from Zkillboard, and throw 
 
 I developed it for our corporation's Slack Team, but I figured out it was a good idea to add an easy way to connect it to others services.
 
+## Examples
+
+### Slack
+
+![Slack Example](https://raw.githubusercontent.com/VictorBersy/eve-online-killboard-to-slack/master/screenshots/slack_example.png)
+
+### CLI
+
+![CLI Example](https://raw.githubusercontent.com/VictorBersy/eve-online-killboard-to-slack/master/screenshots/cli_example.png)
+
+https://github.com/VictorBersy/eve-online-killboard-to-slack/blob/master/screenshots/slack_example.png
+
+
+
 ## How to install and configure it
 
 - Clone the repository
