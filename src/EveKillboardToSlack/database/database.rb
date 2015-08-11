@@ -14,7 +14,7 @@ module EveKillboardToSlack
     private
 
     def read
-      YAML::load_file(File.join($root_path, 'config', 'database.yml'))
+      YAML.load_file(File.join($root_path, 'config', 'database.yml'))
     end
 
     def write(name, value)

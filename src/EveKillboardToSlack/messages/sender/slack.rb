@@ -12,7 +12,7 @@ module EveKillboardToSlack
         end
 
         def create_slack_client
-          slack_params = self.method("#{@type}_params".to_sym).call
+          slack_params = method("#{@type}_params".to_sym).call
           webhook_url = $config['slack']['webhook_url']
           Slack::Notifier.new webhook_url, slack_params
         end

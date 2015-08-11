@@ -24,7 +24,7 @@ module EveKillboardToSlack
 
         def colored_message
           type            = Rainbow("New #{@data[:type]}").red
-          date            = Rainbow(@data[:time].strftime("%Y-%m-%d at %H:%M:%S (EvE Time)")).yellow
+          date            = Rainbow(@data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)')).yellow
           pilot_name      = Rainbow(@data[:pilot_name]).blue
           totalValue      = Rainbow(@data[:isk_value]).green
           zkillboard_link = @data[:link]
