@@ -20,9 +20,16 @@ module EveKillboardToSlack
             id: data['killID'],
             time: Time.parse(data['killTime']),
             pilot_name: data['victim']['characterName'],
-            isk_value: data['zkb']['totalValue'].to_s + ' ISK',
+            isk_value: split_number(data['zkb']['totalValue'].to_s) + ' ISK',
             link: "https://zkillboard.com/kill/#{data['killID']}/"
           }
+        end
+
+        def split_number(number)
+          numbers = number.split('.')
+          integer = numbers[0].reverse.scan(/.{1,3}/).join(' ').reverse
+          float = numbers[1]
+          [integer, float].join('.')
         end
       end
     end
