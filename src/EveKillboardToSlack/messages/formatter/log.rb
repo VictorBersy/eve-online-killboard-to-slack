@@ -13,23 +13,24 @@ module EveKillboardToSlack
         private
 
         def raw_message
-          type            = @data[:type]
-          date            = @data[:time].strftime("%Y-%m-%d at %H:%M:%S (EvE Time)")
-          pilot_name      = @data[:pilot_name]
-          totalValue      = @data[:isk_value]
+          type = @data[:type]
+          date = @data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)')
+          pilot_name = @data[:pilot_name]
+          total_value = @data[:isk_value]
           zkillboard_link = @data[:link]
 
-          "New #{type} : [#{date} : #{pilot_name} / #{totalValue}](#{zkillboard_link})"
+          "New #{type} : [#{date} : #{pilot_name} / #{total_value}](#{zkillboard_link})"
         end
 
         def colored_message
-          type            = Rainbow("New #{@data[:type]}").red
-          date            = Rainbow(@data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)')).yellow
-          pilot_name      = Rainbow(@data[:pilot_name]).blue
-          totalValue      = Rainbow(@data[:isk_value]).green
+          type = Rainbow("New #{@data[:type]}").red
+          date = @data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)')
+          date = Rainbow(date).yellow
+          pilot_name = Rainbow(@data[:pilot_name]).blue
+          total_value = Rainbow(@data[:isk_value]).green
           zkillboard_link = @data[:link]
 
-          "#{type} at #{date} : #{pilot_name} / #{totalValue}](#{zkillboard_link}"
+          "#{type} at #{date} : #{pilot_name} / #{total_value}](#{zkillboard_link}"
         end
       end
     end
