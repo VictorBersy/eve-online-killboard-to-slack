@@ -1,0 +1,3 @@
+# Checks for missing top-level documentation of classes and modules
+Documentation:
+  Enabled: false
