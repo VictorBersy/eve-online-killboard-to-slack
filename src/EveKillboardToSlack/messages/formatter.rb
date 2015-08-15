@@ -28,7 +28,7 @@ module EveKillboardToSlack
         def split_number(number)
           numbers = number.split('.')
           integer = numbers[0].reverse.scan(/.{1,3}/).join(' ').reverse
-          float = numbers[1]
+          float = numbers[1] || '00'
           [integer, float].join('.')
         end
       end
