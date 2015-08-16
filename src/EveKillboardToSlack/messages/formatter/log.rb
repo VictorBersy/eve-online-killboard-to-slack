@@ -30,7 +30,7 @@ module EveKillboardToSlack
           total_value = Rainbow(@data[:isk_value]).green
           zkillboard_link = @data[:link]
 
-          "#{type} at #{date} : #{pilot_name} / #{total_value}](#{zkillboard_link}"
+          "#{type} at #{date} : #{pilot_name} / #{total_value} #{zkillboard_link}"
         end
       end
     end
