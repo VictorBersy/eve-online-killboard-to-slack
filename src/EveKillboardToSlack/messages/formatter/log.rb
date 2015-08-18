@@ -19,7 +19,8 @@ module EveKillboardToSlack
           total_value = @data[:isk_value]
           zkillboard_link = @data[:link]
 
-          "New #{type} : [#{date} : #{pilot_name} / #{total_value}](#{zkillboard_link})"
+          "New #{type} : [#{date} : #{pilot_name} "\
+          "/ #{total_value}](#{zkillboard_link})"
         end
 
         def colored_message
@@ -30,7 +31,8 @@ module EveKillboardToSlack
           total_value = Rainbow(@data[:isk_value]).green
           zkillboard_link = @data[:link]
 
-          "#{type} at #{date} : #{pilot_name} / #{total_value} #{zkillboard_link}"
+          "#{type} at #{date} : #{pilot_name} / "\
+          "#{total_value} #{zkillboard_link}"
         end
       end
     end
