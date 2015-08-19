@@ -2,17 +2,26 @@ module EveKillboardToSlack
   module Message
     class Dispatcher
       def initialize(data, params)
-        data[:type] = params[:type]
-        params[:to].push(:log).each do |sender_name|
+        @data = data
+        @data[:type] = params[:type]
+        dispatch
+      end
+
+      def dispatch
+        to_services.each do |sender_name|
           formatter = EveKillboardToSlack::Message::Formatter::Formatter
-                      .new(data, sender_name)
+                      .new(@data, sender_name)
           message = formatter.format_message
-          sender = sender_instance(sender_name, params[:type])
+          sender = sender_instance(sender_name, @data[:type])
           sender.send(message)
         end
       end
 
       private
+
+      def to_services
+        [:log, :slack]
+      end
 
       def sender_instance(to, type)
         class_name = 'EveKillboardToSlack::Message::Sender::'
