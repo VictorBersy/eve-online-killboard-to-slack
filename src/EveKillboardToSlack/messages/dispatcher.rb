@@ -20,7 +20,7 @@ module EveKillboardToSlack
       private
 
       def to_services
-        [:log, :slack]
+        $config['services']['enabled'].map(&:to_sym)
       end
 
       def sender_instance(to, type)
