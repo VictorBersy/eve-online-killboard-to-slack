@@ -16,10 +16,11 @@ module EveKillboardToSlack
           type = @data[:type]
           date = @data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)')
           pilot_name = @data[:pilot_name]
+          corporation_name = @data[:corporation_name]
           total_value = @data[:isk_value]
           zkillboard_link = @data[:link]
 
-          "New #{type} : [#{date} : #{pilot_name} "\
+          "New #{type} : [#{date} : #{pilot_name}(#{corporation_name}) "\
           "/ #{total_value}](#{zkillboard_link})"
         end
 
@@ -28,10 +29,11 @@ module EveKillboardToSlack
           date = @data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)')
           date = Rainbow(date).yellow
           pilot_name = Rainbow(@data[:pilot_name]).blue
+          corporation_name = Rainbow(@data[:corporation_name]).blue
           total_value = Rainbow(@data[:isk_value]).green
           zkillboard_link = @data[:link]
 
-          "#{type} at #{date} : #{pilot_name} / "\
+          "#{type} at #{date} : #{pilot_name}(#{corporation_name}) / "\
           "#{total_value} #{zkillboard_link}"
         end
       end
