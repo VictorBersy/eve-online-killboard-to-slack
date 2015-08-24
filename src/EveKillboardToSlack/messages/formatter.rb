@@ -21,6 +21,7 @@ module EveKillboardToSlack
             id: data['killID'],
             time: Time.parse(data['killTime']),
             pilot_name: data['victim']['characterName'],
+            pilot_id: data['victim']['characterID'],
             corporation_name: data['victim']['corporationName'],
             isk_value: split_number(data['zkb']['totalValue'].to_s) + ' ISK',
             link: "https://zkillboard.com/kill/#{data['killID']}/"
