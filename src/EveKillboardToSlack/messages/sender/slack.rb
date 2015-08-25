@@ -8,8 +8,8 @@ module EveKillboardToSlack
         end
 
         def send(message)
-          params = { unfurl_media: true }
-          @slack_client.ping message[:attachment], params
+          params = { attachments: [message[:attachment]] }
+          @slack_client.ping(message[:link], params)
         end
 
         def create_slack_client
