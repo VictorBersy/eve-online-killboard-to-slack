@@ -44,8 +44,6 @@ module EveKillboardToSlack
             color: get_color_by_type(data[:type]),
             author_name: data[:pilot_name],
             author_link: data[:pilot_id],
-            title: "New #{data[:type]}!",
-            title_link: data[:zkillboard_link],
             fields: [
               { title: 'Date', value: data[:date], short: true },
               { title: 'Pilot Name', value: data[:pilot_name], short: true },
