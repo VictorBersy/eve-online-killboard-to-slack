@@ -23,7 +23,8 @@ module EveKillboardToSlack
             pilot_id: @data[:pilot_id],
             corporation_name: @data[:corporation_name],
             total_value: @data[:isk_value],
-            zkillboard_link: @data[:link]
+            zkillboard_link: @data[:link],
+            web_page: MetaInspector.new(@data[:link])
           }
         end
 
@@ -42,14 +43,15 @@ module EveKillboardToSlack
           {
             fallback: "New #{data[:type]} #{data[:zkillboard_link]}",
             color: get_color_by_type(data[:type]),
-            author_name: data[:pilot_name],
-            author_link: data[:pilot_id],
+            title: data[:web_page].meta['og:description'],
+            title_link: data[:web_page].meta['og:url'],
             fields: [
               { title: 'Date', value: data[:date], short: true },
               { title: 'Pilot Name', value: data[:pilot_name], short: true },
               { title: 'Corporation Name', value: data[:corporation_name], short: true },
               { title: 'Total Value', value: data[:total_value], short: true }
-            ]
+            ],
+            thumb_url: data[:web_page].meta['og:image']
           }
         end
       end

@@ -9,7 +9,7 @@ module EveKillboardToSlack
 
         def send(message)
           params = { attachments: [message[:attachment]] }
-          @slack_client.ping(message[:link], params)
+          @slack_client.ping('', params)
         end
 
         def create_slack_client
