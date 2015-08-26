@@ -7,6 +7,7 @@ module EveKillboardToSlack
   require 'slack-notifier'
   require 'logger'
   require 'rainbow'
+  require 'metainspector'
 
   require 'EveKillboardToSlack/boot/loader'
   Boot::Boot.new
