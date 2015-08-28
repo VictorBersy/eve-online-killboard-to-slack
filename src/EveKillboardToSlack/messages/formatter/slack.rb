@@ -19,12 +19,13 @@ module EveKillboardToSlack
           {
             type: @data[:type],
             date: @data[:time].strftime('%Y-%m-%d at %H:%M:%S (EvE Time)'),
+            ship_name: @data[:ship_name],
             pilot_name: @data[:pilot_name],
             pilot_id: @data[:pilot_id],
             corporation_name: @data[:corporation_name],
             total_value: @data[:isk_value],
             zkillboard_link: @data[:link],
-            web_page: MetaInspector.new(@data[:link])
+            web_page: (@data[:web_page])
           }
         end
 
@@ -47,6 +48,7 @@ module EveKillboardToSlack
             title_link: data[:web_page].meta['og:url'],
             fields: [
               { title: 'Date', value: data[:date], short: true },
+              { title: 'Ship name', value: data[:ship_name], short: true },
               { title: 'Pilot Name', value: data[:pilot_name], short: true },
               { title: 'Corporation Name', value: data[:corporation_name], short: true },
               { title: 'Total Value', value: data[:total_value], short: true }

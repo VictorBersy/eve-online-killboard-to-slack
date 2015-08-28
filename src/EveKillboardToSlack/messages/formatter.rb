@@ -16,6 +16,8 @@ module EveKillboardToSlack
         private
 
         def data_to_agnostic_format(data)
+          kill_link = "https://zkillboard.com/kill/#{data['killID']}/"
+          web_page = MetaInspector.new(kill_link)
           {
             type: data[:type],
             id: data['killID'],
@@ -24,7 +26,9 @@ module EveKillboardToSlack
             pilot_id: data['victim']['characterID'],
             corporation_name: data['victim']['corporationName'],
             isk_value: split_number(data['zkb']['totalValue'].to_s) + ' ISK',
-            link: "https://zkillboard.com/kill/#{data['killID']}/"
+            link: kill_link,
+            web_page: web_page,
+            ship_name: web_page.meta['og:title'].split('|')[0].delete(' ')
           }
         end
 
