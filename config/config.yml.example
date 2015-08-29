@@ -10,6 +10,7 @@ slack:
 zkillboard:
   # You can select your alliance, corporation, etc...
   # see more here : https://neweden-dev.com/ZKillboard_API#Fetch_modifiers
+  kills_url: 'https://zkillboard.com/api/kills/allianceID/XXXXXXXXXXX'
   losses_url: 'https://zkillboard.com/api/losses/allianceID/XXXXXXXXXXX/'
 services:
   enabled:
