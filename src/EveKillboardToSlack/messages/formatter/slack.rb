@@ -7,7 +7,7 @@ module EveKillboardToSlack
         end
 
         def format
-          message = {
+          {
             link: format_link_message,
             attachment: format_attachment
           }
@@ -30,7 +30,7 @@ module EveKillboardToSlack
         end
 
         def get_color_by_type(type)
-          colors = {kill: 'good', loss: 'danger'}
+          colors = { kill: 'good', loss: 'danger' }
           colors[type.to_sym]
         end
 
@@ -50,7 +50,8 @@ module EveKillboardToSlack
               { title: 'Date', value: data[:date], short: true },
               { title: 'Ship name', value: data[:ship_name], short: true },
               { title: 'Pilot Name', value: data[:pilot_name], short: true },
-              { title: 'Corporation Name', value: data[:corporation_name], short: true },
+              { title: 'Corporation Name', value: data[:corporation_name],
+                short: true },
               { title: 'Total Value', value: data[:total_value], short: true }
             ],
             thumb_url: data[:web_page].meta['og:image']
@@ -60,4 +61,3 @@ module EveKillboardToSlack
     end
   end
 end
-
