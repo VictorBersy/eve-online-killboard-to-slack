@@ -8,7 +8,7 @@ module EveKillboardToSlack
         end
 
         def format_message
-          class_name = "EveKillboardToSlack::Message::Formatter::"
+          class_name = 'EveKillboardToSlack::Message::Formatter::'
           class_name += "#{@formatter_name.downcase.capitalize}Formatter"
           Object.const_get(class_name).new(@agnostic_data).format
         end
