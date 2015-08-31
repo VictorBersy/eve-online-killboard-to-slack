@@ -42,7 +42,8 @@ module EveKillboardToSlack
       end
 
       def save_last_id(last_id, type)
-        Tools.database.set("last_#{type}_id", last_id) unless @last_loss_id[type]
+        column_name = "last_#{type}_id"
+        Tools.database.set(column_name, last_id) unless @last_loss_id[type]
         @last_loss_id[type] = last_id
       end
     end
