@@ -10,11 +10,11 @@ module EveKillboardToSlack
       end
 
       def config
-        @config ||= YAML.load_file(File.join(self.root_path, 'config', 'config.yml'))
+        @config ||= YAML.load_file(File.join(root_path, 'config', 'config.yml'))
       end
 
       def logger
-        @logger ||= Logger.new(File.join(self.root_path, 'logs', 'log.txt'))
+        @logger ||= Logger.new(File.join(root_path, 'logs', 'log.txt'))
       end
     end
   end
