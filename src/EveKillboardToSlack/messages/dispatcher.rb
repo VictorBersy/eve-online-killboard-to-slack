@@ -20,7 +20,7 @@ module EveKillboardToSlack
       private
 
       def to_services
-        $config['services']['enabled'].map(&:to_sym)
+        Tools.config['services']['enabled'].map(&:to_sym)
       end
 
       def sender_instance(to, type)

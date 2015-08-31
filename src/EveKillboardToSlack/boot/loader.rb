@@ -12,5 +12,7 @@ module EveKillboardToSlack
   require 'EveKillboardToSlack/messages/sender/slack'
   require 'EveKillboardToSlack/messages/sender/log'
 
+  require 'EveKillboardToSlack/tools/tools'
+
   require 'EveKillboardToSlack/zkillboard/zkillboard'
 end

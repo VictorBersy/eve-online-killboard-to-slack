@@ -14,13 +14,13 @@ module EveKillboardToSlack
     private
 
     def read
-      YAML.load_file(File.join($root_path, 'config', 'database.yml'))
+      YAML.load_file(File.join(Tools.root_path, 'config', 'database.yml'))
     end
 
     def write(name, value)
       data = read
       data[name.to_sym] = value
-      file_path = File.join($root_path, 'config', 'database.yml')
+      file_path = File.join(Tools.root_path, 'config', 'database.yml')
       File.open(file_path, 'w') { |f| f.write data.to_yaml }
     end
   end

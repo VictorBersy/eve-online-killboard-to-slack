@@ -14,23 +14,23 @@ module EveKillboardToSlack
 
         def create_slack_client
           slack_params = method("#{@type}_params".to_sym).call
-          webhook_url = $config['slack']['webhook_url']
+          webhook_url = Tools.config['slack']['webhook_url']
           Slack::Notifier.new webhook_url, slack_params
         end
 
         def loss_params
           {
-            username: $config['slack']['username'],
-            channel: $config['slack']['losses']['channel'],
-            icon_emoji: $config['slack']['losses']['emoji']
+            username: Tools.config['slack']['username'],
+            channel: Tools.config['slack']['losses']['channel'],
+            icon_emoji: Tools.config['slack']['losses']['emoji']
           }
         end
 
         def kill_params
           {
-            username: $config['slack']['username'],
-            channel: $config['slack']['kills']['channel'],
-            icon_emoji: $config['slack']['kills']['emoji']
+            username: Tools.config['slack']['username'],
+            channel: Tools.config['slack']['kills']['channel'],
+            icon_emoji: Tools.config['slack']['kills']['emoji']
           }
         end
       end

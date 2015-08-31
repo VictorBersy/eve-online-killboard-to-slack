@@ -3,8 +3,8 @@ module EveKillboardToSlack
     class Zkillboard
       def initialize
         @last_loss_id = {}
-        retrieve_losses($config['zkillboard']['losses_url'])
-        retrieve_kills($config['zkillboard']['kills_url'])
+        retrieve_losses(Tools.config['zkillboard']['losses_url'])
+        retrieve_kills(Tools.config['zkillboard']['kills_url'])
       end
 
       def retrieve_kills(url)
@@ -16,7 +16,7 @@ module EveKillboardToSlack
       end
 
       def retrieve_data(type, url)
-        last_id = $database.get("last_#{type}_id")
+        last_id = Tools.database.get("last_#{type}_id")
         url = append_zk_param(url, 'afterKillID', last_id)
         json_data = JSON.parse(open(url).read)
         split_data(json_data, type.to_sym)
@@ -42,7 +42,7 @@ module EveKillboardToSlack
       end
 
       def save_last_id(last_id, type)
-        $database.set("last_#{type}_id", last_id) unless @last_loss_id[type]
+        Tools.database.set("last_#{type}_id", last_id) unless @last_loss_id[type]
         @last_loss_id[type] = last_id
       end
     end
